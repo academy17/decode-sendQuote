@@ -72,6 +72,7 @@ const _callIface = new web3.eth.Contract(_callAbi, '0x00000000000000000000000000
 const calldata = "YOUR_CALLDATA_HERE";
 
 // Decoding the calldata for _call()
+// calldata.slice(10) removes the first 10 characters (4 bytes for the function selector in hex + "0x" prefix). We only decode the encoded function parameters.
 const decodedData = web3.eth.abi.decodeParameters(_callAbi[0].inputs, calldata.slice(10));
 
 // Helper function to filter named outputs
